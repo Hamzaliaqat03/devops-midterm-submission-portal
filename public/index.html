@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assignment Submission Portal</title>
+  <link rel="stylesheet" href="colors.css">
+  <style>
+    body { font-family: system-ui, sans-serif; background: var(--color-background); color: var(--color-text); margin: 0; padding: 24px 16px; }
+    main { max-width: 860px; margin: 0 auto; }
+    .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+    h1 { margin: 0 0 4px; } p.sub { color: var(--color-muted); margin: 0 0 20px; }
+    label { display: block; font-weight: 600; margin: 12px 0 4px; }
+    input { width: 100%; box-sizing: border-box; padding: 9px; border: 1px solid var(--color-border); border-radius: 6px; font-size: 15px; }
+    button { margin-top: 16px; background: var(--color-primary); color: var(--color-primary-text); border: 0; border-radius: 6px; padding: 10px 18px; font-size: 15px; cursor: pointer; }
+    .msg { padding: 10px; border-radius: 6px; margin-top: 14px; display: none; }
+    .msg.ok { display: block; background: var(--color-success-bg); color: var(--color-success-text); }
+    .msg.err { display: block; background: var(--color-error-bg); color: var(--color-error-text); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--color-border); word-break: break-all; }
+    tr:nth-child(even) td { background: var(--color-row-alt); }
+    .mode { color: var(--color-muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Assignment Submission Portal</h1>
+  <p class="sub">CSC418 DevOps &mdash; submit a link to your assignment.</p>
+
+  <form id="form" class="card" novalidate>
+    <label for="name">Student name</label>
+    <input id="name" name="name">
+    <label for="regNo">Registration number</label>
+    <input id="regNo" name="regNo">
+    <label for="title">Assignment title</label>
+    <input id="title" name="title">
+    <label for="url">Submission URL</label>
+    <input id="url" name="url" placeholder="https://github.com/you/assignment">
+    <button type="submit">Submit</button>
+    <div id="msg" class="msg"></div>
+  </form>
+
+  <section class="card">
+    <h2>Saved submissions</h2>
+    <p id="mode" class="mode"></p>
+    <table>
+      <thead><tr><th>#</th><th>Name</th><th>Reg. No.</th><th>Title</th><th>URL</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

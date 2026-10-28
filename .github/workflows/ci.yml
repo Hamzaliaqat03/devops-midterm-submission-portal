@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    env:
+      RECEIVER_URL: ${{ secrets.RECEIVER_URL }}
+      RECEIVER_TOKEN: ${{ secrets.RECEIVER_TOKEN }}
+      MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run automated tests
+        id: tests
+        run: npm test
+
+      - name: Build report and send it to the local receiver
+        id: report
+        if: always()
+        run: |
+          npm run report
+          echo "status=$(node -p "require('./test-report.json').status")" >> "$GITHUB_OUTPUT"
+          echo "summary=$(node -p "const r=require('./test-report.json').summary; r.passed+'/'+r.total+' passed, '+r.failed+' failed'")" >> "$GITHUB_OUTPUT"
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: test-report.json
+
+      - name: Email the test report
+        if: always() && env.MAIL_USERNAME != ''
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER || 'smtp.gmail.com' }}
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          from: CI Test Reports <${{ secrets.MAIL_USERNAME }}>
+          to: ${{ secrets.MAIL_TO }}
+          subject: "[${{ github.repository }}] Tests ${{ steps.report.outputs.status }} - ${{ github.sha }}"
+          body: |
+            Repository: ${{ github.repository }}
+            Branch: ${{ github.ref_name }}
+            Commit: ${{ github.sha }}
+            Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            Overall result: ${{ steps.report.outputs.status }}
+            Tests: ${{ steps.report.outputs.summary }}
+
+            The full report with individual test results is attached (test-report.json).
+          attachments: test-report.json
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: test
+    if: github.ref == 'refs/heads/main' && needs.test.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deployment
+        uses: actions/deploy-pages@v4

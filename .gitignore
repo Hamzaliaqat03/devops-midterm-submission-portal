@@ -1,0 +1,7 @@
+node_modules/
+data/
+test-results.json
+test-report.json
+receiver/test-report.json
+receiver/reports/
+.DS_Store

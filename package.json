@@ -1,0 +1,13 @@
+{
+  "name": "assignment-submission-portal",
+  "version": "1.0.0",
+  "description": "CSC418 DevOps lab midterm: assignment submission portal with CI test reports",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=./tests/json-reporter.mjs --test-reporter-destination=test-results.json tests/*.test.js",
+    "receiver": "node receiver/server.mjs",
+    "report": "node ci/send-report.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

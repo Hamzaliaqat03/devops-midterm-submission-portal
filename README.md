@@ -122,3 +122,12 @@ If `MAIL_USERNAME` is not set, the email step is skipped.
 | 9 | All pipeline runs | [09-all-runs.png](screenshots/09-all-runs.png) |
 
 Copies of the received reports are in [`screenshots/report-pass.json`](screenshots/report-pass.json), [`report-fail.json`](screenshots/report-fail.json) and [`report-fixed.json`](screenshots/report-fixed.json).
+
+### Deployed on GitHub (screenshots from the live site)
+
+| # | Step | File |
+| --- | --- | --- |
+| 10 | Live Pages site: missing registration number rejected | [10-pages-missing-regno-rejected.png](screenshots/10-pages-missing-regno-rejected.png) |
+| 11 | Live Pages site: invalid URL rejected | [11-pages-invalid-url-rejected.png](screenshots/11-pages-invalid-url-rejected.png) |
+| 12 | Live Pages site: valid submission saved and listed | [12-pages-valid-submission-saved.png](screenshots/12-pages-valid-submission-saved.png) |
+| 13 | GitHub repository | [13-github-repo.png](screenshots/13-github-repo.png) |

@@ -106,3 +106,19 @@ If `MAIL_USERNAME` is not set, the email step is skipped.
 1. **Passing run:** push to `main`. All three tests pass, the receiver saves `status: "passed"`, and Pages deploys.
 2. **Failing run:** introduce a defect. For example, in `public/validate.js` change `if (!data[key])` to `if (!data[key] && key !== 'regNo')`. Then push. The missing-registration-number test fails, the receiver saves `status: "failed"` with the failure message, and the deploy is skipped.
 3. **Fixed run:** revert the defect and push again. All tests pass again.
+
+## Evidence (screenshots)
+
+| # | Step | File |
+| --- | --- | --- |
+| 1 | Portal running locally with a saved submission | [01-portal-local.png](screenshots/01-portal-local.png) |
+| 2 | Demo 1: passing pipeline (tests pass, Pages deployed) | [02-pass-pipeline.png](screenshots/02-pass-pipeline.png) |
+| 3 | Demo 1: `test-report.json` received locally (passed, 3/3) | [03-pass-test-report-json.png](screenshots/03-pass-test-report-json.png) |
+| 4 | Bonus: portal deployed on GitHub Pages | [04-github-pages.png](screenshots/04-github-pages.png) |
+| 5 | Demo 2: defect pushed, test stage fails, deploy skipped | [05-fail-pipeline.png](screenshots/05-fail-pipeline.png) |
+| 6 | Demo 2: `test-report.json` received locally (failed, 2/3, with failure message) | [06-fail-test-report-json.png](screenshots/06-fail-test-report-json.png) |
+| 7 | Demo 3: defect fixed, pipeline passes, Pages deployed | [07-fixed-pipeline.png](screenshots/07-fixed-pipeline.png) |
+| 8 | Demo 3: `test-report.json` received locally (passed, 3/3) | [08-fixed-test-report-json.png](screenshots/08-fixed-test-report-json.png) |
+| 9 | All pipeline runs | [09-all-runs.png](screenshots/09-all-runs.png) |
+
+Copies of the received reports are in [`screenshots/report-pass.json`](screenshots/report-pass.json), [`report-fail.json`](screenshots/report-fail.json) and [`report-fixed.json`](screenshots/report-fixed.json).

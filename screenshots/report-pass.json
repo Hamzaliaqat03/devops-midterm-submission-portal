@@ -1,0 +1,35 @@
+{
+  "repository": "Hamzaliaqat03/devops-midterm-submission-portal",
+  "branch": "main",
+  "commitSha": "b3d6d27a51f82e05449ec7061fd4cdecbed30067",
+  "pipelineRunId": "40696011151",
+  "pipelineRunNumber": "2",
+  "pipelineRunUrl": "https://github.com/Hamzaliaqat03/devops-midterm-submission-portal/actions/runs/40696011151",
+  "executedAt": "2026-10-28T13:24:49.780Z",
+  "tests": [
+    {
+      "name": "Complete details and a valid submission URL are saved and listed",
+      "result": "passed",
+      "durationMs": 58,
+      "failureMessage": null
+    },
+    {
+      "name": "Missing registration number is rejected with a validation message",
+      "result": "passed",
+      "durationMs": 11,
+      "failureMessage": null
+    },
+    {
+      "name": "Invalid submission URL is rejected and not saved",
+      "result": "passed",
+      "durationMs": 10,
+      "failureMessage": null
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "status": "passed"
+}

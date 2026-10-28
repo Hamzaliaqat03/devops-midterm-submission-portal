@@ -145,3 +145,4 @@ Copies of the received reports are in [`screenshots/report-pass.json`](screensho
 | 21 | `gh run list`: pipeline results | [21-terminal-gh-run-list.png](screenshots/21-terminal-gh-run-list.png) |
 | 22 | `git log`: pass, defect and fix commits | [22-terminal-git-log.png](screenshots/22-terminal-git-log.png) |
 | 23 | Saved report files and the latest `test-report.json` | [23-terminal-received-reports.png](screenshots/23-terminal-received-reports.png) |
+| 24 | GitHub Pages config and deployment history: only passing commits deployed, failing run skipped | [24-terminal-github-pages-deployments.png](screenshots/24-terminal-github-pages-deployments.png) |

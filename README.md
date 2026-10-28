@@ -131,3 +131,17 @@ Copies of the received reports are in [`screenshots/report-pass.json`](screensho
 | 11 | Live Pages site: invalid URL rejected | [11-pages-invalid-url-rejected.png](screenshots/11-pages-invalid-url-rejected.png) |
 | 12 | Live Pages site: valid submission saved and listed | [12-pages-valid-submission-saved.png](screenshots/12-pages-valid-submission-saved.png) |
 | 13 | GitHub repository | [13-github-repo.png](screenshots/13-github-repo.png) |
+
+### Terminal steps
+
+| # | Step | File |
+| --- | --- | --- |
+| 15 | Start the portal | [15-terminal-npm-start.png](screenshots/15-terminal-npm-start.png) |
+| 16 | API checks: valid saved, missing reg. no. and invalid URL rejected | [16-terminal-api-validation.png](screenshots/16-terminal-api-validation.png) |
+| 17 | `npm test`: all 3 tests pass | [17-terminal-npm-test-pass.png](screenshots/17-terminal-npm-test-pass.png) |
+| 18 | Defect introduced: `npm test` fails (exit code 1) | [18-terminal-npm-test-fail-defect.png](screenshots/18-terminal-npm-test-fail-defect.png) |
+| 19 | Local receiver log: pass, fail and fixed reports received | [19-terminal-receiver-log.png](screenshots/19-terminal-receiver-log.png) |
+| 20 | CI secrets configured | [20-terminal-gh-secrets.png](screenshots/20-terminal-gh-secrets.png) |
+| 21 | `gh run list`: pipeline results | [21-terminal-gh-run-list.png](screenshots/21-terminal-gh-run-list.png) |
+| 22 | `git log`: pass, defect and fix commits | [22-terminal-git-log.png](screenshots/22-terminal-git-log.png) |
+| 23 | Saved report files and the latest `test-report.json` | [23-terminal-received-reports.png](screenshots/23-terminal-received-reports.png) |
